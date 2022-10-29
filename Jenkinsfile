@@ -15,13 +15,13 @@ pipeline {
         }
         stage('Run Image'){
             steps {
-                sh 'docker compose up -d --no-color --wait'
+                sh 'docker-compose up -d --no-color --wait'
             }
         }
     }
 }
 post {
     always {
-        sh 'docker compose down --remove-orphans -v'
+        sh 'docker-compose down --remove-orphans -v'
     }
 }
