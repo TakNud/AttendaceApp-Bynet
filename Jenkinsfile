@@ -1,6 +1,7 @@
 pipeline {
     environment {
         registry = 'jenk_deneme/ml_model'
+        DOCKERHUB_CREDENTIALS=credentials('almogso')
         dockerImage = ''
     }
     agent any
@@ -13,9 +14,15 @@ pipeline {
                 }
             }
         }
-        stage('Run Image'){
+        stage('Login') {
+
             steps {
-                sh 'docker-compose up -d --no-color --wait'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        stage('docker push to hub'){
+            steps {
+                sh 'docker push almogso/attenapp:latest'
             }
         }
     }
