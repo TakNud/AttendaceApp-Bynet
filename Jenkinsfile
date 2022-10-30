@@ -9,7 +9,7 @@ pipeline {
             agent any
             steps {
                 script {
-                    sh 'chmod 666 //var/run/docker.sock'
+                    sh 'sudo chmod 666 //var/run/docker.sock'
                     echo 'permission for docker sock gived'
                     sh 'docker build -t almogso/attenapp:latest .'
                     echo 'build image succesfully'
