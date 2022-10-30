@@ -29,6 +29,12 @@ pipeline {
                 echo 'docker image removed from local'
             }
         }
+        stage('Test){
+              steps{
+                  sh 'deploy.sh test'
+              }
+        }
+        
     }
 }
 
