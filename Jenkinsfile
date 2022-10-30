@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Test'){
               steps{
-                  sh 'sudo chmod 777 deploy.sh'
+                  sh "chmod +x -R ${env.WORKSPACE}"
                   sh './deploy.sh test'
               }
         }
