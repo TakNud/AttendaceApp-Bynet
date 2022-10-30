@@ -24,12 +24,11 @@ pipeline {
         stage('docker push to hub'){
             steps {
                 sh 'docker push almogso/attenapp:latest'
+                echo 'image was pushed to HUB'
+                sh 'docker rmi -f $(docker images -aq)'
+                echo 'docker image remove from local'
             }
         }
     }
 }
-post {
-    always {
-        sh 'docker-compose down --remove-orphans -v'
-    }
-}
+
