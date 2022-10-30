@@ -2,7 +2,6 @@ pipeline {
     environment {
         registry = 'jenk_deneme/ml_model'
         DOCKERHUB_CREDENTIALS=credentials('Docker-Cred')
-        dockerImage = ''
     }
     agent any
     stages {
@@ -10,8 +9,10 @@ pipeline {
             agent any
             steps {
                 script {
-                    
+                    sh 'chmod 666 //var/run/docker.sock'
+                    echo 'permission for docker sock gived'
                     sh 'docker build -t almogso/attenapp:latest .'
+                    echo 'build image succesfully'
                 }
             }
         }
@@ -25,7 +26,8 @@ pipeline {
             steps {
                 sh 'docker push almogso/attenapp:latest'
                 echo 'image was pushed to HUB'
-                sh 'docker stop $(docker ps -q) || docker rm $(docker ps -a -q) || docker rmi $(docker images -q -f dangling=true)'
+                sh 'docker system prune --all'
+                echo 'y'
                 echo 'docker image removed from local'
             }
         }
