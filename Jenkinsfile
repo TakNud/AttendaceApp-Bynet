@@ -25,8 +25,8 @@ pipeline {
             steps {
                 sh 'docker push almogso/attenapp:latest'
                 echo 'image was pushed to HUB'
-                sh 'docker rmi -f $(docker images -aq)'
-                echo 'docker image remove from local'
+                sh 'docker stop $(docker ps -q) || docker rm $(docker ps -a -q) || docker rmi $(docker images -q -f dangling=true)'
+                echo 'docker image removed from local'
             }
         }
     }
