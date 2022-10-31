@@ -2,7 +2,7 @@
 
 # VARABLES #
 machine=$1
-SECRET_KEY="~/.ssh/id_rsa" 
+SECRET_KEY="/home/ec2-user/.ssh/id_rsa" 
 JENKINS_PROJECT_FOLDER="/var/lib/jenkins/workspace/dev-Automation"
 echo "deploying to $machine"
 echo "createing directory and copy"
