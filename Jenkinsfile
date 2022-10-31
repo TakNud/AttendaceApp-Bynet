@@ -30,7 +30,7 @@ pipeline {
             }
         }
         stage('Test'){
-            sh deploy.sh test
+            sh 'bash -x deploy.sh test'
         }
         
     }
