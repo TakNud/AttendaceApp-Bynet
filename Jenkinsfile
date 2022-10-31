@@ -30,7 +30,9 @@ pipeline {
             }
         }
         stage('Test'){
+            steps {
             sh 'bash -x deploy.sh test'
+            }
         }
         
     }
