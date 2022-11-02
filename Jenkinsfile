@@ -30,8 +30,10 @@ pipeline {
             }
         }
         stage('Test'){
-            sshagent(['Test-ec2-server']) {
-                sh 'bash -x deploy.sh test'
+            steps{
+                sshagent(['Test-ec2-server']) {
+                    sh 'bash -x deploy.sh test'
+                }
             }
         }
         
