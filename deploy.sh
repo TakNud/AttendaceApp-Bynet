@@ -8,5 +8,11 @@ echo "deploying to $machine"
 echo "createing directory and copy"
 #ssh -i $SECRET_KEY -o StrictHostKeyChecking=no $machine "mkdir -p /home/ec2-user/final"
 scp -o StrictHostKeyChecking=no -r $JENKINS_PROJECT_FOLDER ec2-user@$machine:/home/ec2-user/final
+echo "COPIED to $machine"
 #scp -v -r -i $SECRET_KEY -o StrictHostKeyChecking=no $JENKINS_PROJECT_FOLDER ec2-user@$machine:/home/ec2-user/final
 #scp -i $SECRET_KEY $JENKINS_PROJECT_FOLDER ec2-user@$machine:~
+#if [$machine='test']
+#then
+#    curl test
+#fi
+    
