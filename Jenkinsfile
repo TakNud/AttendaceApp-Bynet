@@ -32,6 +32,8 @@ pipeline {
         stage('Test'){
             steps{
                 sshagent(['Test-ec2-server']) {
+                    sh 'whoami'
+                    sh 'pwd'
                     sh 'bash -x deploy.sh test'
                 }
             }
