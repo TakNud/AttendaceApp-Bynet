@@ -34,7 +34,7 @@ pipeline {
                 sshagent(['ec2-user']) {
                     sh 'whoami'
                     sh 'pwd'
-                    sh 'bash -x deploy.sh test'
+                    sh 'bash -x deploy.sh prod'
                 }
             }
         }
