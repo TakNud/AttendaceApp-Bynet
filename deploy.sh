@@ -19,5 +19,7 @@ then
         then echo "Request was successful"
         else echo "CURL Failed"
     fi
+    docker-compose -f /home/ec2-user/final/dev-Automation/docker-compose.yml down
+    echo 'Test Docker Stopped !' 
 fi
     
