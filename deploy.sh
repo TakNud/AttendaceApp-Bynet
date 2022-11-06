@@ -3,7 +3,7 @@
 # VARABLES #
 machine=$1
 SECRET_KEY="/var/lib/jenkins/.ssh/id_rsa" 
-JENKINS_PROJECT_FOLDER="/var/lib/jenkins/workspace/dev-Automation"
+JENKINS_PROJECT_FOLDER="/var/lib/jenkins/workspace/dev-Automation/docker-compose.yml"
 echo "deploying to $machine"
 echo "createing directory and copy"
 #ssh -i $SECRET_KEY -o StrictHostKeyChecking=no $machine "mkdir -p /home/ec2-user/final"
