@@ -10,7 +10,7 @@ scp -o StrictHostKeyChecking=no -r $JENKINS_PROJECT_FOLDER ec2-user@$machine:/ho
 echo "COPIED to $machine"
 ssh ec2-user@$machine "docker login"
 ssh ec2-user@$machine "docker pull almogso/attenapp:latest"
-ssh ec2-user@$machine "docker-compose -f /home/ec2-user/final/dev-Automation/docker-compose.yml up -d"
+ssh ec2-user@$machine "docker-compose -f /home/ec2-user/final/docker-compose.yml up -d"
 if [ $machine == "test" ];
 then
     echo 'Run Curl testing...'
@@ -19,7 +19,7 @@ then
         then echo "Request was successful"
         else echo "CURL Failed"
     fi 
-    ssh ec2-user@$machine "docker-compose -f /home/ec2-user/final/dev-Automation/docker-compose.yml down"
+    ssh ec2-user@$machine "docker-compose -f /home/ec2-user/final/docker-compose.yml down"
     echo 'Test Docker Stopped !' 
 fi
     
