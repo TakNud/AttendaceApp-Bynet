@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   attanapp:
-    image: attenapp:latest
+    image: attanapp
     build: 
           context: .
           dockerfile: ./Dockerfile
