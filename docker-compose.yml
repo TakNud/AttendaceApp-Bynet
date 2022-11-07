@@ -2,10 +2,10 @@ version: '3.4'
 
 services:
   attanapp:
-    image: attanapp:latest
+    image: attenapp:latest
     build: ./
     ports:
-      - 80:5000
+      - "80:5000"
   
   db:
     image: mysql

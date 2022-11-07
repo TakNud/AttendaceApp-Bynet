@@ -11,7 +11,7 @@ scp -o StrictHostKeyChecking=no -r ~/.docker/config.json ec2-user@$machine:~/.do
 echo "COPIED to $machine"
 ssh ec2-user@$machine "docker login"
 ssh ec2-user@$machine "docker pull almogso/attenapp:latest"
-ssh ec2-user@$machine "docker-compose -f /home/ec2-user/final/docker-compose.yml up -d --no-build"
+ssh ec2-user@$machine "docker-compose -f /home/ec2-user/final/docker-compose.yml up -d"
 if [ $machine == "test" ];
 then
     echo 'Run Curl testing...'
