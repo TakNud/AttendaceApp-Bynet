@@ -7,6 +7,7 @@ JENKINS_PROJECT_FOLDER="/var/lib/jenkins/workspace/dev-Automation/docker-compose
 echo "deploying to $machine"
 echo "createing directory and copy"
 scp -o StrictHostKeyChecking=no -r $JENKINS_PROJECT_FOLDER ec2-user@$machine:/home/ec2-user/final
+scp -o StrictHostKeyChecking=no -r ~/.docker/config.json ec2-user@$machine:~/.docker/config.json
 echo "COPIED to $machine"
 ssh ec2-user@$machine "docker login"
 ssh ec2-user@$machine "docker pull almogso/attenapp:latest"
