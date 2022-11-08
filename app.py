@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, send_from_directory, send_file
+from flask import Flask, render_template, request, send_from_directory, send_file, url_for, redirect
 from flask_dropzone import Dropzone
 from attendance import att
 import response
@@ -18,7 +18,7 @@ dropzone = Dropzone(app)
 @app.route('/', methods=['GET'])
 def home():
     if request.form.get('upload') == 'Upload':
-        return render_template('upload.html')
+        return redirect(url_for('upload'))
     return render_template('index.html')
 
 
