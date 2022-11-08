@@ -15,7 +15,14 @@ app.config.update(
 dropzone = Dropzone(app)
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
+def home():
+    if request.form.get('upload') == 'Upload':
+        return render_template('upload.html')
+    return render_template('index.html')
+
+
+@app.route('/upload', methods=['POST', 'GET'])
 def upload():
     if request.method == 'POST':
         if request.form.get('action') == 'Download':
@@ -29,7 +36,7 @@ def upload():
             f = request.files.get('file')
             f.save(os.path.join(app.config['UPLOADED_PATH'], f.filename))
 
-    return render_template('index.html')
+    return render_template('upload.html')
 
 
 if __name__ == '__main__':
