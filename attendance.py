@@ -12,7 +12,7 @@ import pysftp
 import mysql.connector
 
 mydb = mysql.connector.connect(
-    host="127.0.0.1",
+    host="184.72.127.1",
     user="root",
     password="root",
     database="test_db",
