@@ -19,7 +19,7 @@ dropzone = Dropzone(app)
 def home():
     if request.method == 'POST':
         if request.form.get('upload') == 'Upload':
-            return redirect(url_for('upload'))
+            return redirect(url_for('/upload.html'))
     return render_template('index.html')
 
 

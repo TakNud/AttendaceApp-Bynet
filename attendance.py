@@ -6,16 +6,30 @@ import pandas as pd
 import os
 import glob
 import re
+#import pysftp
 
-# import mysql.connector
+import mysql.connector
 
-# mydb = mysql.connector.connect(
-#   host="localhost",
-#   user="root",
-#   password="",
-#   database="test_db"
-# )
+mydb = mysql.connector.connect(
+    host="184.72.127.1",
+    user="root",
+    password="root",
+    database="test_db"
+)
 
+
+# def download_csvs():
+#   Hostname = "185.164.16.144"
+#   Username = "almogs"
+#   Password = "123456"
+#   localFilePath = "/app"
+#   cnopts = pysftp.CnOpts()
+#   cnopts.hostkeys = None
+#   with pysftp.Connection(host=Hostname, username=Username, password=Password, cnopts=cnopts) as sftp:
+#     print("Connection successfully established ... ")
+#     # Switch to a remote directory
+#     sftp.get_r("/var/tmp/csv_files/", localFilePath)
+#     print("done")
 
 def att():
     # get the current path
