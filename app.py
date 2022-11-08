@@ -15,10 +15,11 @@ app.config.update(
 dropzone = Dropzone(app)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST', 'GET'])
 def home():
-    if request.form.get('upload') == 'Upload':
-        return redirect(url_for('upload'))
+    if request.method == 'POST':
+        if request.form.get('upload') == 'Upload':
+            return redirect(url_for('upload'))
     return render_template('index.html')
 
 
