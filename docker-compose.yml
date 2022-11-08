@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   attanapp:
-    image: attanapp
+    image: almogso/attenapp:latest
     build: 
           context: .
           dockerfile: ./Dockerfile
