@@ -8,17 +8,9 @@ import shutil
 import glob
 import re
 import pysftp
-
-import mysql.connector
-
-mydb = mysql.connector.connect(
-    host="184.72.127.1",
-    user="root",
-    password="root",
-    database="test_db",
-    auth_plugin='mysql_native_password'
-)
-print(mydb)
+from datetime import date
+import mysql.connector as msql
+from mysql.connector import Error
 
 
 def download_csvs():
@@ -60,8 +52,9 @@ def att():
                 data['Name'][cur_name] += cur_duration
 
     df_new = pd.DataFrame.from_dict(data)
-
-    return df_new.to_csv("output.csv")
+    csvNew = df_new.to_csv("output.csv")
+    importIntoDb(csvNew)
+    return csvNew
     #print("Merge All File in Directory Succeed! !")
 
 
@@ -76,3 +69,25 @@ def removeFiles():
                 shutil.rmtree(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
+
+
+def importIntoDb(csvFlie):
+    try:
+        conn = msql.connect(host='localhost', database='test_db', user='root')
+        if conn.is_connected():
+            cursor = conn.cursor()
+            cursor.execute("select database();")
+            record = cursor.fetchone()
+            print("You're connected to database: ", record)
+            print('Creating table....')
+            cursor.execute(
+                "CREATE TABLE `{text}` (name varchar(40) ,sum varchar(10) ".format(text=date.today()))
+            print("table is created....")
+            for i, row in csvFlie.iterrows():
+                sql = "INSERT INTO test_db.`{text}` VALUES (%s,%s,%s,%s,%s)".format(
+                    text=date.today())
+                cursor.execute(sql, tuple(row))
+                print("Record inserted")
+                conn.commit()
+    except Error as e:
+        print("Error while connecting to MySQL", e)
