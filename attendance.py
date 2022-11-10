@@ -61,7 +61,7 @@ def att(flag):
                 data['Name'][cur_name] += cur_duration
 
     df_new = pd.DataFrame.from_dict(data)
-    df_new.to_csv(os.getcwd()+"output.csv")
+    df_new.to_csv(os.getcwd()+"/output.csv")
     intoDB()
     print("Merge All File in Directory Succeed! !")
 
@@ -97,7 +97,7 @@ def intoDB():
                 'CREATE TABLE summary (name varchar(40) ,sum varchar(10) );')
             print("table is created....")
         # Open file
-            with open(os.getcwd()+'output.csv') as file_obj:
+            with open(os.getcwd()+'/output.csv') as file_obj:
                 # Create reader object by passing the file
                 # object to reader method
                 reader_obj = csv.reader(file_obj)

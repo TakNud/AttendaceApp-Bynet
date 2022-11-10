@@ -32,7 +32,7 @@ pipeline {
         stage('Test'){
             steps{
                 sshagent(['ec2-user']) {
-                    sh 'bash -x deploy.sh test'
+                    //sh 'bash -x deploy.sh test' ********DONT FORGET TO BACK IT**********
                 }
             }
         }
