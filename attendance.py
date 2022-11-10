@@ -34,6 +34,8 @@ def att(flag):
         path = '/app/uploads'
     elif flag:
         path = '/app/uploads/var/tmp/csv_files'
+    print("Current path-> ", os.getcwd())
+    print("path to save upload files-> ", path)
     # load all the files on directory
     csv_files = glob.glob(os.path.join(path, "par*.csv"))
     # Create new empty dic
@@ -56,8 +58,8 @@ def att(flag):
                 data['Name'][cur_name] += cur_duration
 
     df_new = pd.DataFrame.from_dict(data)
-    return df_new.to_csv("output.csv")
-    #print("Merge All File in Directory Succeed! !")
+    df_new.to_csv("output.csv")
+    print("Merge All File in Directory Succeed! !")
 
 
 def removeFiles():

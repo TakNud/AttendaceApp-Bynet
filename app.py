@@ -36,7 +36,7 @@ def home():
 def upload():
     if request.method == 'POST':
         if request.form.get('action1') == 'Submit':
-            ret = att(False)
+            att(False)
             intoDB()
             sleep(15)
             with open("output.csv", encoding="utf8") as file:
