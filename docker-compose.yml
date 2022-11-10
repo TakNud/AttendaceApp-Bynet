@@ -1,6 +1,17 @@
 version: '3.4'
 
 services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: test_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+      
   attanapp:
     image: almogso/attenapp:latest
     links: 
@@ -11,17 +22,6 @@ services:
     ports:
       - "80:5000"
   
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      MYSQL_DATABASE: test_db
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./db:/docker-entrypoint-initdb.d/:ro
-
       
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest

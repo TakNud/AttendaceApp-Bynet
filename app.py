@@ -26,7 +26,7 @@ def home():
             download_csvs()
             sleep(15)
             att(True)
-            intoDB()
+            sleep(10)
             with open("/app/output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
     return render_template('index.html')
@@ -37,7 +37,6 @@ def upload():
     if request.method == 'POST':
         if request.form.get('action1') == 'Submit':
             att(False)
-            intoDB()
             sleep(15)
             with open("/app/output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
@@ -52,8 +51,9 @@ def upload():
 def csv_table():
     if request.method == 'POST':
         if request.form.get('action') == 'Download':
-            download = send_file('output.csv')
+            download = send_file('/app/output.csv')
             return download
+    return render_template('csv_table.html')
 
 
 if __name__ == '__main__':

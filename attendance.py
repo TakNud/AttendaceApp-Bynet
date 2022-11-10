@@ -2,6 +2,7 @@
 ##Almog Sofer##
 ###############
 
+from time import sleep
 import pandas as pd
 import os
 import shutil
@@ -59,6 +60,7 @@ def att(flag):
 
     df_new = pd.DataFrame.from_dict(data)
     df_new.to_csv("output.csv")
+    intoDB()
     print("Merge All File in Directory Succeed! !")
 
 
@@ -77,6 +79,7 @@ def removeFiles():
 
 
 def intoDB():
+    sleep(30)
     try:
         conn = msql.connect(host='localhost', database='test_db', user='root')
         if conn.is_connected():
