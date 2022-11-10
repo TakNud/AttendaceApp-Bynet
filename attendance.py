@@ -11,6 +11,7 @@ import pysftp
 from datetime import date
 import mysql.connector as msql
 from mysql.connector import Error
+import csv
 
 
 def download_csvs():
@@ -52,14 +53,12 @@ def att():
                 data['Name'][cur_name] += cur_duration
 
     df_new = pd.DataFrame.from_dict(data)
-    csvNew = df_new.to_csv("output.csv")
-    importIntoDb(csvNew)
-    return csvNew
+    return df_new.to_csv("output.csv")
     #print("Merge All File in Directory Succeed! !")
 
 
 def removeFiles():
-    folder = '/path/to/folder'
+    folder = os.getcwd()+'/uploads'
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
@@ -71,7 +70,7 @@ def removeFiles():
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
 
-def importIntoDb(csvFlie):
+def intoDB():
     try:
         conn = msql.connect(host='localhost', database='test_db', user='root')
         if conn.is_connected():
@@ -79,15 +78,22 @@ def importIntoDb(csvFlie):
             cursor.execute("select database();")
             record = cursor.fetchone()
             print("You're connected to database: ", record)
+            cursor.execute('DROP TABLE IF EXISTS summary;')
             print('Creating table....')
             cursor.execute(
-                "CREATE TABLE `{text}` (name varchar(40) ,sum varchar(10) ".format(text=date.today()))
+                "CREATE TABLE summary (name varchar(40) ,sum varchar(10) )")
             print("table is created....")
-            for i, row in csvFlie.iterrows():
-                sql = "INSERT INTO test_db.`{text}` VALUES (%s,%s,%s,%s,%s)".format(
-                    text=date.today())
-                cursor.execute(sql, tuple(row))
-                print("Record inserted")
+        # Open file
+            with open('output.csv') as file_obj:
+                # Create reader object by passing the file
+                # object to reader method
+                reader_obj = csv.reader(file_obj)
+        # Iterate over each row in the csv
+        # file using reader object
+                for row in reader_obj:
+                    sql = "INSERT INTO summary (name, sum) VALUES (%s, %s)"
+                    val = (row[0], row[1])
+                    cursor.execute(sql, val)
                 conn.commit()
     except Error as e:
         print("Error while connecting to MySQL", e)
