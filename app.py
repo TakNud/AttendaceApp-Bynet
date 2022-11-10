@@ -8,6 +8,7 @@ import response
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+os.mkdir(os.getcwd()+'/uploads')
 app.config.update(
     UPLOADED_PATH=os.path.join(basedir, os.getcwd()+'/uploads'),
     DROPZONE_MAX_FILE_SIZE=1024,
