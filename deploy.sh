@@ -14,7 +14,7 @@ ssh ec2-user@$machine "docker pull almogso/attenapp:latest"
 ssh ec2-user@$machine "docker-compose -f /home/ec2-user/final/docker-compose.yml up -d"
 if [ $machine == "test" ];
 then
-    sleep 50
+    sleep 20
     echo 'Run Curl testing...'
     if curl -I test 2>&1 | grep -w "200\|301" ; then
         echo 'Test success'
