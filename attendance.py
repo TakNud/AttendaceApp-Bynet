@@ -81,7 +81,7 @@ def intoDB():
             cursor.execute('DROP TABLE IF EXISTS summary;')
             print('Creating table....')
             cursor.execute(
-                "CREATE TABLE summary (name varchar(40) ,sum varchar(10) )")
+                'CREATE TABLE summary (name varchar(40) ,sum varchar(10) );')
             print("table is created....")
         # Open file
             with open('output.csv') as file_obj:
@@ -91,7 +91,7 @@ def intoDB():
         # Iterate over each row in the csv
         # file using reader object
                 for row in reader_obj:
-                    sql = "INSERT INTO summary (name, sum) VALUES (%s, %s)"
+                    sql = 'INSERT INTO summary (name, sum) VALUES (%s, %s);'
                     val = (row[0], row[1])
                     cursor.execute(sql, val)
                 conn.commit()

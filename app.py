@@ -37,7 +37,7 @@ def upload():
             ret = att()
             intoDB()
             with open("output.csv", encoding="utf8") as file:
-                return render_template("csv_table.html", csv=file)
+                return render_template("/csv_table.html", csv=file)
         else:
             f = request.files.get('file')
             f.save(os.path.join(app.config['UPLOADED_PATH'], f.filename))
