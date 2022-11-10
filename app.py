@@ -37,7 +37,7 @@ def upload():
     if request.method == 'POST':
         if request.form.get('submit') == 'SUBMIT':
             att(False)
-            with open(os.getcwd()+"output.csv", encoding="utf8") as file:
+            with open(os.getcwd()+"/output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
         else:
             f = request.files.get('file')
