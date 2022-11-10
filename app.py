@@ -27,7 +27,7 @@ def home():
             sleep(15)
             att(True)
             intoDB()
-            with open("output.csv", encoding="utf8") as file:
+            with open("/app/output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
     return render_template('index.html')
 
@@ -39,7 +39,7 @@ def upload():
             att(False)
             intoDB()
             sleep(15)
-            with open("output.csv", encoding="utf8") as file:
+            with open("/app/output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
         else:
             f = request.files.get('file')
