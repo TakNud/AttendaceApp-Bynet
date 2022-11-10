@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background: #eee2dc;
+  background-image: url('./background_docker.png');
+  background-repeat: no-repeat;
+  background-size: 1000px;
+  background-position: 50% 600px;
+  background-blend-mode: darken;
+}
+.wrapper {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 48px;
+  border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+  background: hsla(27, 33%, 73%, 0.517);
+  width: 65%;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  color: #123c69;
+}
+.title {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 2.5;
+  text-align: center;
+}
+.divider {
+  border: 1px solid rgba(100, 100, 111, 0.4);
+  height: 200px;
+}
+.options {
+  font-weight: 700;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.options > ul {
+  list-style: outside;
+}
+li {
+  margin-top: 6px;
+}
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+}
+input {
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  color: #eee2dc;
+  background-color: #85756e;
+  cursor: pointer;
+}
+input:hover {
+  background-color: #514642;
+}

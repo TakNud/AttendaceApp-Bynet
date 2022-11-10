@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>FlaskApp - Attendace</title>
-  {{ dropzone.load_css() }}
-  {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<div style="color:blue;text-align:center;border: 4px solid #0087F7"> 
-	FlaskApp for mearge Attendance csv files - by Almog_Sofer :) </div>
-  
-  <form method="post" action="/upload">
-    <input type="submit" value="SUBMIT" name="submit"/>
-  </form>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./Index.css" />
 
-  {{ dropzone.create(action='upload') }}
-  {{ dropzone.load_js() }}
-  {{ dropzone.config() }}
-</body>
+    <title>Upload</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">
+        FlaskApp for merge Attendance csv files - by Almog_Sofer :)
+      </div>
+      <div class="divider"></div>
+      <div class="dropzone">
+        <div>
+          {{ dropzone.create(action='upload') }} {{ dropzone.load_js() }} {{
+          dropzone.config() }}
+        </div>
+        <form method="post" action="/upload">
+          <input type="submit" value="SUBMIT" name="submit" />
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
