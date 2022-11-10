@@ -18,7 +18,7 @@ def download_csvs():
     Hostname = "185.164.16.144"
     Username = "almogs"
     Password = "123456"
-    localFilePath = os.getcwd()+'/uploads'
+    localFilePath = '/app/uploads'
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
     with pysftp.Connection(host=Hostname, username=Username, password=Password, cnopts=cnopts) as sftp:
@@ -30,7 +30,7 @@ def download_csvs():
 
 def att():
     # get the current path
-    path = os.getcwd()+'/uploads'
+    path = '/app/uploads'
     # load all the files on directory
     csv_files = glob.glob(os.path.join(path, "par*.csv"))
     # Create new empty dic
@@ -58,7 +58,7 @@ def att():
 
 
 def removeFiles():
-    folder = os.getcwd()+'/uploads'
+    folder = '/app/uploads'
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
@@ -68,6 +68,7 @@ def removeFiles():
                 shutil.rmtree(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
+    print("All Files Removed!")
 
 
 def intoDB():
