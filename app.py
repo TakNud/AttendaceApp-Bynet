@@ -26,16 +26,13 @@ def home():
             att()
             intoDB()
             with open("output.csv", encoding="utf8") as file:
-                return render_template("csv_table.html", csv=file)
+                return render_template("/csv_table.html", csv=file)
     return render_template('index.html')
 
 
 @app.route('/upload', methods=['POST', 'GET'])
 def upload():
     if request.method == 'POST':
-        if request.form.get('action') == 'Download':
-            download = send_file('output.csv')
-            return download
         if request.form.get('action1') == 'Submit':
             ret = att()
             intoDB()
@@ -46,6 +43,14 @@ def upload():
             f.save(os.path.join(app.config['UPLOADED_PATH'], f.filename))
 
     return render_template('upload.html')
+
+
+@app.route('/csv_table', methods=['POST', 'GET'])
+def csv_table():
+    if request.method == 'POST':
+        if request.form.get('action') == 'Download':
+            download = send_file('output.csv')
+            return download
 
 
 if __name__ == '__main__':

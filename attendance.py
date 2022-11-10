@@ -18,7 +18,7 @@ def download_csvs():
     Hostname = "185.164.16.144"
     Username = "almogs"
     Password = "123456"
-    localFilePath = "/uploads"
+    localFilePath = os.getcwd()+'/uploads'
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
     with pysftp.Connection(host=Hostname, username=Username, password=Password, cnopts=cnopts) as sftp:
