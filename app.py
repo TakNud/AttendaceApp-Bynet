@@ -1,4 +1,5 @@
 import os
+from time import sleep
 from flask import Flask, render_template, request, send_from_directory, send_file, url_for, redirect
 from flask_dropzone import Dropzone
 from attendance import att, intoDB, download_csvs, removeFiles
@@ -23,7 +24,8 @@ def home():
         if request.form.get('sftp') == 'SFTP':
             removeFiles()
             download_csvs()
-            att()
+            sleep(15)
+            att(True)
             intoDB()
             with open("output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
@@ -34,8 +36,9 @@ def home():
 def upload():
     if request.method == 'POST':
         if request.form.get('action1') == 'Submit':
-            ret = att()
+            ret = att(False)
             intoDB()
+            sleep(15)
             with open("output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
         else:

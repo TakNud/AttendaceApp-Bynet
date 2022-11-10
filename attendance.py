@@ -28,9 +28,12 @@ def download_csvs():
         print("done")
 
 
-def att():
+def att(flag):
     # get the current path
-    path = '/app/uploads'
+    if flag == False:
+        path = '/app/uploads'
+    elif flag:
+        path = '/app/uploads/var/tmp/csv_files'
     # load all the files on directory
     csv_files = glob.glob(os.path.join(path, "par*.csv"))
     # Create new empty dic
