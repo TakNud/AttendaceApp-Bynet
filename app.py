@@ -9,7 +9,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config.update(
-    UPLOADED_PATH=os.path.join(basedir, '/app/uploads'),
+    UPLOADED_PATH=os.path.join(basedir, os.getcwd()+'/uploads'),
     DROPZONE_MAX_FILE_SIZE=1024,
     DROPZONE_TIMEOUT=5*60*1000)
 
@@ -26,19 +26,17 @@ def home():
             download_csvs()
             sleep(15)
             att(True)
-            sleep(10)
-            with open("/app/output.csv", encoding="utf8") as file:
+            with open(os.getcwd()+"/output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
-    return render_template('index.html')
+    return render_template('/index.html')
 
 
 @app.route('/upload', methods=['POST', 'GET'])
 def upload():
     if request.method == 'POST':
-        if request.form.get('action1') == 'Submit':
+        if request.form.get('submit') == 'SUBMIT':
             att(False)
-            sleep(15)
-            with open("/app/output.csv", encoding="utf8") as file:
+            with open(os.getcwd()+"output.csv", encoding="utf8") as file:
                 return render_template("/csv_table.html", csv=file)
         else:
             f = request.files.get('file')
@@ -51,7 +49,7 @@ def upload():
 def csv_table():
     if request.method == 'POST':
         if request.form.get('action') == 'Download':
-            download = send_file('/app/output.csv')
+            download = send_file(os.getcwd()+'/output.csv')
             return download
     return render_template('csv_table.html')
 

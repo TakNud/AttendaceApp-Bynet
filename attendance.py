@@ -20,25 +20,27 @@ def download_csvs():
     Username = "almogs"
     Password = "123456"
     localFilePath = '/app/uploads'
+    serverPath = '/var/tmp/csv_files/'
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
     with pysftp.Connection(host=Hostname, username=Username, password=Password, cnopts=cnopts) as sftp:
         print("Connection successfully established ... ")
         # Switch to a remote directory
-        sftp.get_r("/var/tmp/csv_files/", localFilePath)
-        print("done")
+        sftp.get_r(serverPath, localFilePath)
+        print("All files downloaded from:", serverPath)
 
 
 def att(flag):
     # get the current path
     if flag == False:
-        path = '/app/uploads'
+        path = os.getcwd()+'/uploads'
     elif flag:
-        path = '/app/uploads/var/tmp/csv_files'
+        path = os.getcwd()+'/uploads/var/tmp/csv_files'
     print("Current path-> ", os.getcwd())
     print("path to save upload files-> ", path)
     # load all the files on directory
     csv_files = glob.glob(os.path.join(path, "par*.csv"))
+    sleep(5)
     # Create new empty dic
     data = {'Name': {}}
 
@@ -59,13 +61,13 @@ def att(flag):
                 data['Name'][cur_name] += cur_duration
 
     df_new = pd.DataFrame.from_dict(data)
-    df_new.to_csv("output.csv")
+    df_new.to_csv(os.getcwd()+"output.csv")
     intoDB()
     print("Merge All File in Directory Succeed! !")
 
 
 def removeFiles():
-    folder = '/app/uploads'
+    folder = os.getcwd()+'/uploads'
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
@@ -76,9 +78,11 @@ def removeFiles():
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
     print("All Files Removed!")
+    sleep(10)
 
 
 def intoDB():
+    print("sleeping for update DB")
     sleep(30)
     try:
         conn = msql.connect(host='localhost', database='test_db', user='root')
@@ -93,7 +97,7 @@ def intoDB():
                 'CREATE TABLE summary (name varchar(40) ,sum varchar(10) );')
             print("table is created....")
         # Open file
-            with open('output.csv') as file_obj:
+            with open(os.getcwd()+'output.csv') as file_obj:
                 # Create reader object by passing the file
                 # object to reader method
                 reader_obj = csv.reader(file_obj)
