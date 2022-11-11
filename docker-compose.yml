@@ -21,13 +21,7 @@ services:
           dockerfile: ./Dockerfile
     ports:
       - "80:5000"
-    working_dir: /app
-    volumes:
-      - ./:/app
-    environment:
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_DB: test_db
+
   
       
   phpmyadmin:

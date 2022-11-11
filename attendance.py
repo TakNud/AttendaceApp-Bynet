@@ -85,7 +85,7 @@ def intoDB():
     print("sleeping for update DB")
     sleep(30)
     try:
-        conn = msql.connect(host='localhost', database='test_db', user='root')
+        conn = msql.connect(host='db', database='test_db', user='root')
         if conn.is_connected():
             cursor = conn.cursor()
             cursor.execute("select database();")
