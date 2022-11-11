@@ -82,8 +82,7 @@ def removeFiles():
 
 
 def intoDB():
-    print("sleeping for update DB")
-    sleep(30)
+    print("update DB")
     try:
         conn = msql.connect(host='db', database='test_db', user='root')
         if conn.is_connected():
@@ -95,8 +94,10 @@ def intoDB():
             print('Creating table....')
             cursor.execute(
                 'CREATE TABLE summary (name varchar(40) ,sum varchar(10) );')
+            sleep(3)
             cursor.execute(
-                'ALTER DATABASE test_db CHARACTER SET utf8 COLLATE utf8_general_ci;')
+                'ALTER TABLE summary CONVERT TO CHARACTER SET utf8_general_cs;')
+            sleep(3)
             print("table is created....")
         # Open file
             with open(os.getcwd()+'/output.csv') as file_obj:
