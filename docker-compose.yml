@@ -25,7 +25,7 @@ services:
     volumes:
       - ./:/app
     environment:
-      MYSQL_HOST: mysql
+      MYSQL_HOST: db
       MYSQL_USER: root
       MYSQL_DB: test_db
   
