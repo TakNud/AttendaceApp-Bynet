@@ -94,7 +94,7 @@ def intoDB():
             cursor.execute('DROP TABLE IF EXISTS summary;')
             print('Creating table....')
             cursor.execute(
-                'CREATE TABLE summary (name varchar(40) ,sum varchar(10) );')
+                'CREATE TABLE summary (name varchar(40) SET utf8mb4 ,sum varchar(10) );')
             print("table is created....")
         # Open file
             with open(os.getcwd()+'/output.csv') as file_obj:
