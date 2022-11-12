@@ -32,7 +32,7 @@ PIPELINE FOR :
 # 🛢 Management DataBase [PHPMyAdmin](https://www.phpmyadmin.net/)
 * [x] Plugins for Management 
 
-## 🔩 Backend ([Flask](https://flask.palletsprojects.com/)
+## 🔩 Backend [Flask](https://flask.palletsprojects.com/)
 * [x] Use Dropzone - Flask
 * [x] Read&Write from DB(MySQL)
 * [x] Pull csv file from server
