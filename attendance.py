@@ -95,8 +95,12 @@ def intoDB():
             cursor.execute(
                 'CREATE TABLE summary (name varchar(40) ,sum varchar(10) );')
             sleep(3)
+            # Change type of DB for get hebrew
             cursor.execute(
-                'ALTER TABLE summary CONVERT TO CHARACTER SET utf8_general_cs;')
+                'ALTER DATABASE test_db CHARACTER SET utf8 COLLATE utf8_general_ci;')
+            # Change type of table for get HEBROEW
+            cursor.execute(
+                'ALTER TABLE summary CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;')
             sleep(3)
             print("table is created....")
         # Open file
