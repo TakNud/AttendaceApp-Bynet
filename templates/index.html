@@ -1,38 +1,34 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>FlaskApp - Attendace</title>
-<style>
-.center {
-  text-align: center;
-  border: 5px solid #3498db;
-}
-.middle {
-  margin-left: auto;
-  margin-right: auto;
-  width: 15em
-}
-</style>
-</head>
-<body style="background-color:AliceBlue;">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
-
-<div class="center">
-	<h2>Welcome to Attendace app By Almog-Sofer :)</h2>
-    
-</div>
-<div class="middle">
-  <p>You have 2 option:</p>
-  <p>1. upload manually</p>
-  <p>2. Download from Bynet server:</p>
-    <form method="post" action="/">
-    <input type="submit" value="Upload" name="upload"/>
-    <input type="submit" value="SFTP" name="sftp"/>
-  </form>
-</div>
-
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Index.css') }}" />
+    <title>Welcome</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">
+        <h2>Welcome to Attendace app By Almog-Sofer :)</h2>
+      </div>
+      <div class="divider"></div>
+      <div class="options">
+        Please select:
+        <ul>
+          <form method="post" action="/">
+            <input type="submit" value="Upload" name="upload"/>
+            <input type="submit" value="SFTP" name="sftp"/>
+          </form>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
-
-
