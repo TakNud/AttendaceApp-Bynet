@@ -69,8 +69,15 @@ input {
 input:hover {
   background-color: #514642;
 }
-
-#demo{
+.csv_table{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 200px;
+}
+tbody{
   width: fit-content;
   display: flex;
   flex-direction: row;
