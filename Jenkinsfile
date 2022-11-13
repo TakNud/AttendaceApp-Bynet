@@ -24,9 +24,9 @@ pipeline {
             steps {
                 sh 'docker push almogso/attenapp:latest'
                 echo 'image was pushed to HUB'
-                //sh 'docker system prune --all'
-                //echo 'y'
-                //echo 'docker image removed from local'
+                sh 'docker system prune --all'
+                echo 'y'
+                echo 'docker image removed from local'
             }
         }
         stage('Test'){
