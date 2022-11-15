@@ -32,7 +32,7 @@ pipeline {
         stage('Test'){
             steps{
                 sshagent(['ec2-user']) {
-                    //sh 'bash -x deploy.sh test' ********DONT FORGET TO BACK IT**********
+                    sh 'bash -x deploy.sh test'
                 }
             }
         }
@@ -43,7 +43,12 @@ pipeline {
                 }
             }
         }
-        
+         
+    }
+    post {
+        always {
+            emailext body: 'Jenkins OutPut', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
     }
 }
 
