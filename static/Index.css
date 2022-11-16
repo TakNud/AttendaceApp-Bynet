@@ -76,7 +76,8 @@ input:hover {
   table-layout: fixed;
 }
 
-td{
+.table td{
+  font-size: 10px;
   border:1px solid #ccc;
   padding:5px 10px;
   vertical-align:top;
