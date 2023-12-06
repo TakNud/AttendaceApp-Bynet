@@ -5,6 +5,12 @@ This project build for final project for Bynet&8200 devOps Course.
  
 ![_FlaskApp - Attendace - Google Chrome_ 2022-09-29 21-57-02_Trim](https://user-images.githubusercontent.com/45693218/196436240-782741ba-4c6a-47ba-a86b-35c794bcb35c.gif)
 
+## Badges
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/TakNud/AttendaceApp-Bynet)
+![GitHub issues](https://img.shields.io/github/issues/TakNud/AttendaceApp-Bynet)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/TakNud/AttendaceApp-Bynet)
+
 
 ## 🛠 [Docker](https://www.docker.com)
 * [x] [Backend+Frontend](https://hub.docker.com/repository/docker/almogso/attenapp)
