@@ -2,8 +2,6 @@
 Flask app for merge some csv files with conflicts solutions.  
 Using MySQL and PHPMyAdmin for database manage.  
 This project build for final project for Bynet&8200 devOps Course. 
- 
-![_FlaskApp - Attendace - Google Chrome_ 2022-09-29 21-57-02_Trim](https://user-images.githubusercontent.com/45693218/196436240-782741ba-4c6a-47ba-a86b-35c794bcb35c.gif)
 
 ## Badges
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
@@ -45,4 +43,6 @@ PIPELINE FOR :
 * [x] Algorithm for merge and export csv files
    And more functions . .
 
+## Example
+![_FlaskApp - Attendace - Google Chrome_ 2022-09-29 21-57-02_Trim](https://user-images.githubusercontent.com/45693218/196436240-782741ba-4c6a-47ba-a86b-35c794bcb35c.gif)
 
